@@ -1,0 +1,35 @@
+﻿@model List<ReadJsonAndChangeFile.Models.Test>
+<ul>
+    <li>@ViewBag.user.Name</li>
+    <li>@ViewBag.user.Class</li>
+    <li>@ViewBag.user.City</li>
+</ul>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Display Name</th>
+            <th>Services</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.DisplayName</td>
+                <td>
+                    @foreach (var serv in item.Services)
+                    {
+                    <ul>
+                        <li>@serv.Description</li>
+                        <li>@serv.EndPoint</li>
+                        <li>@serv.Template</li>
+                        <li>@serv.Time</li>
+                    </ul>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

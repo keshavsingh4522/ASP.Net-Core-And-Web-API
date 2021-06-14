@@ -1,0 +1,40 @@
+{
+  "applications": [
+    {
+      "name": "JsonGenerator1",
+      "displayName": "Json generator 1",
+      "services": [
+        {
+          "description": "Lorem ipsum",
+          "endpoint": "/v1/user/login1",
+          "template": "loginKey1",
+          "time": 60
+        },
+        {
+          "description": "Lorem ipsum forem tefg",
+          "endpoint": "/v1/user/logout1",
+          "template": "logoutKey1",
+          "time": 30
+        }
+      ]
+    },
+    {
+      "name": "JsonGenerator2",
+      "displayName": "Json generator 2",
+      "services": [
+        {
+          "description": "Lorem ipsum",
+          "endpoint": "/v1/user/login2",
+          "template": "loginKey2",
+          "time": 60
+        },
+        {
+          "description": "Lorem ipsum forem tefg",
+          "endpoint": "/v1/user/logout2",
+          "template": "logoutKey2",
+          "time": 30
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+﻿@model ReadJsonAndChangeFile.Models.User
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<ul>
+    <li>@Model.Name</li>
+    <li>@Model.Class</li>
+    <li>@Model.City</li>
+</ul>
+
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Display Name</th>
+            <th>Services</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="data">
+        
+    </tbody>
+</table>
+<a href="E:\Logics PPP\ReadJsonAndChangeFile\test.json">E:\Logics PPP\ReadJsonAndChangeFile\test.json</a>
+@section scripts{ 
+<script type="text/javascript">
+    $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "/test.json",
+        success: function (data) {
+            $("#data").html("");
+            ht=""
+            $.map(data["applications"], function (option) {
+            /*console.log(option);*/
+                ht += `
+<tr>
+    <td>${option.name}</td>
+    <td>${option.displayName}</td>
+    <td>
+        <div class="panel-group">
+
+`
+                $.map(option["services"], function (i) {
+                    ht += `
+<div class="panel panel-default">
+    <div class="panel-heading">Service</div>
+    <div class="panel-body">
+        <ul>
+            <li>Description : ${i.description}</li>
+            <li>Description : ${i.endpoint}</li>
+            <li>Description : ${i.template}</li>
+            <li>Description : ${i.time}</li>
+        </ul>
+    </div>
+</div>
+`
+                    console.log(i);
+                });
+                ht +=`
+</div>
+</td>
+</tr>`
+                $("#data").html(ht);
+            });
+            //console.log(data["applications"].length);
+        }
+    });
+</script>
+}
